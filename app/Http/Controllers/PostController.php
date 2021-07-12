@@ -15,8 +15,8 @@ class PostController extends Controller
     public function index()
     {
         //
-        $posts = Post::all();//get all data from model
-        return view('post.index',compact('posts'));//return datas to Ui with compact
+        return Post::all();//get all data from model
+        // return view('post.index',compact('posts'));//return datas to Ui with compact
     }
 
     /**
@@ -38,18 +38,22 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //need to fill textboxes 
+        
+
+        
+       // need to fill textboxes 
         $request->validate([
             'title' => 'required',
             'content' => 'required'
         ]);
+        return Post::create($request->all());
 
         //Insert into database
-        Post::create([
-            'title' => $request->title, // fist title is name in db, second is name in Ui
-            'content' => $request->content// fist content is name in db, second is name in Ui
-        ]);
-        return redirect('/posts')->with('successAlert','You have successfully added');// redirect to index page
+        // Post::create([
+        //     'title' => $request->title, // fist title is name in db, second is name in Ui
+        //     'content' => $request->content// fist content is name in db, second is name in Ui
+        // ]);
+        // return redirect('/posts')->with('successAlert','You have successfully added');// redirect to index page
     }
 
     /**
@@ -61,6 +65,7 @@ class PostController extends Controller
     public function show($id)
     {
         //
+        return Post::find($id);
     }
 
     /**
@@ -91,12 +96,14 @@ class PostController extends Controller
             'title' => 'required',
             'content' => 'required'
         ]);
-        //
-        Post::find($id)->update([
-            'title' => $request->title, // fist title is name in db, second is name in Ui
-            'content' => $request->content// fist content is name in db, second is name in Ui
-        ]);
-        return redirect('/posts')->with('successAlert','You have successfully update');
+        $post = Post::find($id);
+        $post->update($request->all());
+        return $post;
+        // Post::find($id)->update([
+        //     'title' => $request->title, // fist title is name in db, second is name in Ui
+        //     'content' => $request->content// fist content is name in db, second is name in Ui
+        // ]);
+        // return redirect('/posts')->with('successAlert','You have successfully update');
     }
 
     /**
@@ -108,7 +115,9 @@ class PostController extends Controller
     public function destroy($id)
     {
         // dd($id);
-        Post::find($id)->delete();
-        return redirect('/posts')->with('successAlert','You have successfully delete');
+        // Post::find($id)->delete();
+        // return redirect('/posts')->with('successAlert','You have successfully delete');
+
+        return Post::destroy($id);
     }
 }

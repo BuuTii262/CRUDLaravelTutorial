@@ -22,6 +22,7 @@
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <h5>Update Post</h5>
+                
                 <form action="{{ url('posts/'.$post->id) }}" method="POST">
                     {{ csrf_field() }}
                     @method('PUT')
