@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostCommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +19,10 @@ Route::get('/', function () {
 });
 
 Route::resource('posts',PostController::class);
+
+Route::get('/add-post',[PostCommentController::class,'addPost']);
+Route::get('/add-comment/{id}',[PostCommentController::class,'addComment']);
+Route::get('/get-comments/{id}',[PostCommentController::class,'getCommentById']);
 
 
 
