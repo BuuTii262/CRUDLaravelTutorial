@@ -51,6 +51,13 @@
                                 <form action="{{ url('posts/'.$post->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
+
+                                    <a href="{{ url('get-comments/'.$post->id) }}">
+                                        <button type="button" class="btn btn-primary btn-sm">
+                                            Commments
+                                        </button>
+                                    </a> 
+
                                     <a href="{{ url('posts/'.$post->id.'/edit') }}">
                                         <button type="button" class="btn btn-primary btn-sm">
                                             Edit

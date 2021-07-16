@@ -9,29 +9,32 @@ use App\Models\Post;
 
 class PostCommentController extends Controller
 {
-    //
-    public function addPost()
+    
+    public function getCommentById($id)
     {
-        $post = new Post();
-        $post->title = "First Post Title";
-        $post->content = "First Post Content";
-        $post->save();
-        return "Post has been created";
-
-
+        $comments = Post::find($id)->comments;
+        
+        //return $comments;
+        return view('comment.index',compact('comments'));
     }
+
+    public function createcommments()
+    {
+        //
+        return view('comment.createcomment');//post folder out ka create page ko return
+    }
+
     public function addComment($id)
     {
         $post = Post::find($id);
         $comment = new Comment();
-        $comment->comment = "This is third comment";
+        $comment->comment = "This is second comment";
         $post->comments()->save($comment);
-        return "comment has been posted";
+        //return "comment has been posted";
+
+
+
     }
 
-    public function getCommentById($id)
-    {
-        $comments = Post::find($id)->comments;
-        return $comments;
-    }
+
 }
