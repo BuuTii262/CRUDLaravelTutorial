@@ -26,15 +26,15 @@ Route::get('/', function () {
 Route::resource('posts',PostController::class);
 Route::resource('teacher',TeacherController::class);
 Route::resource('student',StudentController::class);
+Route::resource('user',UserController::class);
+
 
 //one to many
 Route::get('/add-post',[PostCommentController::class,'addPost']);
 Route::get('/add-comment/{id}',[PostCommentController::class,'addComment']);
 Route::get('/get-comments/{id}',[PostCommentController::class,'getCommentById']);
 
-//one to one
-Route::get('/add-user',[UserController::class,'insertRecord']);
-Route::get('/get-phone/{id}',[UserController::class,'fetchPhoneByuser']);
+
 
 //many to many
 Route::get('/add-roles',[RoleController::class,'addRoles']);
