@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FoodController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostCommentController;
@@ -27,6 +28,7 @@ Route::resource('posts',PostController::class);
 Route::resource('teacher',TeacherController::class);
 Route::resource('student',StudentController::class);
 Route::resource('user',UserController::class);
+Route::resource('food',FoodController::class);
 
 
 //one to many
