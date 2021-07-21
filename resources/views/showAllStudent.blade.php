@@ -35,7 +35,7 @@
         <table class="table">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>ID</th> 
                 <th>Student Name</th>
                 <th>Email</th>               
                 <th>Teacher Name</th>
@@ -49,10 +49,22 @@
                 <td>{{$student->id}}</td>
                 <td>{{$student->student_name}}</td>
                 <td>{{$student->email}}</td>
-                
-                <td>{{ $student->teachers[0]->teacher_name }}</td>
+                <!-- fix error -->
+
+                @if(!empty($student->teachers[0]))
+                <td>{{ $student->teachers[0]-> teacher_name }}</td>
                 <td>{{ $student->teachers[0]->subject }}
-                    <input type="hidden" value="{{$student->teachers[0]->id}}"></td>
+                    <input type="hidden" value="{{$student->teachers[0]->id}}">
+                </td>
+                @else
+                <td>-</td>
+                <td>-<input type="hidden" value=""></td>
+                @endif
+                
+                
+               
+                
+                
                 <td>
                     <a href="javascript:void(0)" class="btn btn-primary btn-sm editBtn">
                     Eidt              
