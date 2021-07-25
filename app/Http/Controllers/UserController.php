@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    //
+    
     public function insertRecord(){
         $phone = new Phone();
         $phone->phone='1234567890';
