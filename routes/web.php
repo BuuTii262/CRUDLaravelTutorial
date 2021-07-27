@@ -28,7 +28,11 @@ Route::resource('posts',PostController::class);
 Route::resource('teacher',TeacherController::class);
 Route::resource('student',StudentController::class);
 Route::resource('user',UserController::class);
+
+
+
 Route::resource('food',FoodController::class);
+Route::get('/searchfood',[FoodController::class,'search']);
 
 
 //one to many

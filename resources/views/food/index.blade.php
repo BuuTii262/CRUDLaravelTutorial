@@ -13,6 +13,11 @@
         .detail-image{
             width: 300px;
         }
+        .a{
+            text-decoration: none;
+            color: black;
+            
+        }
         
     </style>
 
@@ -24,20 +29,43 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <h5>Lists</h5>
-                <a href="{{ url('/food/create') }}">
-                <button class="btn btn-primary btn-sm float-right mb-2">Add New Food</button>
-                </a>
+                <h3><a class="a" href="{{ url('/food') }}">Food Lists</a></h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <form action="/searchfood" method="GET">
+                    
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="search"
+                                placeholder="Enter name to search" value="{{ old('search') }}">
+                                <span class="input-group-prepend">
+                                    <button type="submit" class="btn btn-primary">Search</button>
+                                </span>
+                            
+                            </div>
+                                            
+                        </form>
+
+                    </div>
+                    <div class="col-md-6">
+                        <a href="{{ url('/food/create') }}">
+                        <button class="btn btn-primary float-right mb-2">Add New Food</button>
+                        </a>                       
+                    </div>
+                </div>
+                
+                
                 @if(Session('successAlert'))
                 <div class="alert alert-success alert-dismissibel show fade">
                     <strong>{{ Session('successAlert') }}</strong>
                     <button class="close" data-dismiss="alert">&times;</button>
                 </div>
                 @endif
+
+                <br>
                 <table class="table table-border table-hover">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            
                             <th>Title</th>
                             <th>Image</th>
                             <th>Price</th>
@@ -45,10 +73,18 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @if(empty($foods))
+
+                        <tr>
+                            <td colspan="5">
+                                Data Not Exists
+                            </td>
+                        </tr>
+                        @endif
                         
                         @foreach($foods as $food)
                         <tr>
-                            <td>{{ $food->id }}</td>
+                            
                             <td>{{ $food->food_title }}</td>
                             <td>
                                 @if($food->food_image != "")
@@ -85,7 +121,11 @@
                         </tr>
                         @endforeach  
                     </tbody>
-                </table>               
+                </table>  
+                <div class="pagination-block d-flex justify-content-center">
+                {{ $foods->links('layouts.paginationlink') }}
+                </div>
+                             
                 
             </div>
             <div class="col-md-2"></div>

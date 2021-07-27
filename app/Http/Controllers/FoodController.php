@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Food;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\DB;
+
 
 class FoodController extends Controller
 {
@@ -15,9 +17,23 @@ class FoodController extends Controller
      */
     public function index()
     {
-        $foods = Food::all();
-        return view('food.index',compact('foods'));
+        $foods = Food::paginate(3);
+        
+         return view('food.index',compact('foods'));
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+
+        $foods = DB::table('food')->where('food_title','like','%'.$search.'%')->paginate(3);
+
+        return view('food.index',compact('foods'));
+
+
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
