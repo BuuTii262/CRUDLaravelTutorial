@@ -1,49 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create page</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <style>
-        body{
-            padding : 100px;
-        }
-        .form-elememt{
-            width: 170px;
-            
-        }
-        .form-elememt input{
-            display: none;
-            
-        }
-        .form-elememt img{
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .form-elememt div{
-            position: relative;
-            height: 40px;
-            background: rgba(0, 0, 0, 0.5);
-            text-align: center;
-            line-height: 40px;
-            font-size: 13px;
-            color: #f5f5f5;
-            font-weight: 600;
-        }
-        .form-elememt div span{
-            font-size: 40px;
-        }
-    </style>
-
-
-</head>
-
-<body>
-
-   <div class="container">
+@extends('layouts.master')
+@section('content')
+<br>
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
@@ -121,7 +78,7 @@
             </div>
             <div class="col-md-3"></div>
         </div>
-   </div>
+   
 
 
    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -147,6 +104,4 @@
 
     </script>
 
-
-</body>
-</html>
+@endsection
